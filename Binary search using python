@@ -1,0 +1,40 @@
+def Search(l,n,key ):
+    low=0
+    high=len(l)-1
+    while low<=high:
+        mid=(low+high)//2
+        if l[mid]==key:
+            return mid
+        elif l[mid]<key:
+            low=mid+1
+        else:
+            high=mid-1
+    if low>high:
+        return -1
+def recursive (l,low,high,key):
+    if (low<=high):
+        mid =(low+high)//2
+        if l[mid]==key:
+            return mid
+        elif l[mid]<key:
+            return recursive(l,mid+1,high,key)
+        else:
+            return recursive(l,low,mid-1,high,key)
+    return -1
+n=int(input("enter the size of the list:"))
+l=[]
+for i in range (n):
+    l.append(int(input("enter element you want")))
+    
+key=int(input("enter element to be searched"))
+low=0
+high=len(l)-1
+x=int(input("enter a value which is either 0 or 1"))
+if x==1:
+    result=Search(l,n,key)
+else:
+    result=recursive(l,low,high,key)
+if result==-1:
+    print("element not found")
+else :
+    print("element found at:",result)
